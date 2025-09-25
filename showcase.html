@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍄 Elemental Shrooms - Card Pack Opening Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+        }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .game-title {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+            animation: title-glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes title-glow {
+            from { filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.8)); }
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(75, 85, 99, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .card-demo {
+            width: 150px;
+            height: 210px;
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+            border: 3px solid #f59e0b;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .card-demo:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .holo-effect {
+            background: linear-gradient(45deg, #ff69b4, #ffc0cb, #da70d6, #ff69b4);
+            background-size: 400% 400%;
+            animation: holo-shine 3s ease-in-out infinite;
+        }
+        
+        @keyframes holo-shine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .misprint-effect {
+            border-color: #ff0000 !important;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+            animation: misprint-flash 2s infinite;
+        }
+        
+        @keyframes misprint-flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-4">
+        <div class="text-center max-w-6xl mx-auto">
+            <h1 class="text-6xl md:text-8xl font-bold game-title mb-8 float-animation">
+                🍄 Elemental Shrooms
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+                The ultimate card pack opening experience! Collect rare cards, build valuable decks, 
+                and discover the thrill of finding legendary misprints and multi-finish combinations.
+            </p>
+            
+            <!-- Demo Cards -->
+            <div class="flex justify-center gap-6 mb-12 flex-wrap">
+                <div class="card-demo">
+                    <div class="absolute top-2 left-2 text-xs bg-gray-800 px-2 py-1 rounded">🔥 Fire</div>
+                    <div class="absolute bottom-2 right-2 text-xs text-green-400 font-bold">$8.50</div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-lg font-bold">Scorchshroom</div>
+                            <div class="text-xs text-gray-400">Rare</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-demo holo-effect">
+                    <div class="absolute top-2 left-2 text-xs bg-gray-800 px-2 py-1 rounded">💧 Water</div>
+                    <div class="absolute top-2 right-2 text-xs bg-pink-600 px-2 py-1 rounded">HOLO</div>
+                    <div class="absolute bottom-2 right-2 text-xs text-green-400 font-bold">$24.00</div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-lg font-bold">Dripshroom</div>
+                            <div class="text-xs text-gray-400">Ultra-Rare</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-demo misprint-effect">
+                    <div class="absolute top-2 left-2 text-xs bg-gray-800 px-2 py-1 rounded">⚡ Electric</div>
+                    <div class="absolute top-2 right-2 text-xs bg-red-600 px-2 py-1 rounded">⚠️ MISPRINT</div>
+                    <div class="absolute bottom-2 right-2 text-xs text-green-400 font-bold">$150.00</div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center">
+                            <div class="text-lg font-bold text-red-400">Zapepr</div>
+                            <div class="text-xs text-gray-400">Secret Rare</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html" class="btn-primary text-white font-bold py-4 px-8 rounded-xl text-lg transition-all">
+                    🎮 Play Now
+                </a>
+                <button onclick="scrollToSection('features')" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all">
+                    📖 Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Play Section -->
+    <section id="how-to-play" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 game-title scroll-reveal">
+                🎯 How to Play
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="feature-card glass-panel p-6 rounded-2xl text-center scroll-reveal">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold mb-3">Start with Money</h3>
+                    <p class="text-gray-300">Begin each run with $50. Use your money wisely to buy card packs and gear!</p>
+                </div>
+                
+                <div class="feature-card glass-panel p-6 rounded-2xl text-center scroll-reveal">
+                    <div class="text-4xl mb-4">📦</div>
+                    <h3 class="text-xl font-bold mb-3">Buy Packs</h3>
+                    <p class="text-gray-300">Purchase card packs to discover new cards. Each pack contains 5 cards with random rarities and finishes!</p>
+                </div>
+                
+                <div class="feature-card glass-panel p-6 rounded-2xl text-center scroll-reveal">
+                    <div class="text-4xl mb-4">🃏</div>
+                    <h3 class="text-xl font-bold mb-3">Build Your Deck</h3>
+                    <p class="text-gray-300">Keep valuable cards to build your deck, or sell them for money to buy more packs!</p>
+                </div>
+                
+                <div class="feature-card glass-panel p-6 rounded-2xl text-center scroll-reveal">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="text-xl font-bold mb-3">Earn Rewards</h3>
+                    <p class="text-gray-300">End your run to earn reward cards based on your deck's total value!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4 bg-black bg-opacity-20">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 game-title scroll-reveal">
+                ✨ Amazing Features
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card Rarities -->
+                <div class="feature-card glass-panel p-6 rounded-2xl scroll-reveal">
+                    <div class="text-3xl mb-4">🌟</div>
+                    <h3 class="text-xl font-bold mb-3">5 Rarity Tiers</h3>
+                    <p class="text-gray-300 mb-4">From Common to Secret Rare, each rarity offers different values and excitement!</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-400">Common</span>
+                            <span class="text-green-400">$0.25</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-blue-400">Uncommon</span>
+                            <span class="text-green-400">$2.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-purple-400">Rare</span>
+                            <span class="text-green-400">$8.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-yellow-400">Ultra-Rare</span>
+                            <span class="text-green-400">$35.00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-red-400">Secret Rare</span>
+                            <span class="text-green-400">$150.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Special Finishes -->
+                <div class="feature-card glass-panel p-6 rounded-2xl scroll-reveal">
+                    <div class="text-3xl mb-4">✨</div>
+                    <h3 class="text-xl font-bold mb-3">Special Finishes</h3>
+                    <p class="text-gray-300 mb-4">Discover cards with stunning special finishes that multiply their value!</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-pink-400">Holo</span>
+                            <span class="text-yellow-400">2x Value</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-purple-400">Prismatic</span>
+                            <span class="text-yellow-400">3x Value</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-blue-400">Full Art</span>
+                            <span class="text-yellow-400">5x Value</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-red-400">Misprint</span>
+                            <span class="text-yellow-400">10x Value</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Multi-Finish Cards -->
+                <div class="feature-card glass-panel p-6 rounded-2xl scroll-reveal">
+                    <div class="text-3xl mb-4">🌈</div>
+                    <h3 class="text-xl font-bold mb-3">Multi-Finish Cards</h3>
+                    <p class="text-gray-300 mb-4">Ultra-rare cards can have multiple finishes combined for incredible value!</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="text-center p-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded text-white font-bold">
+                            Full Art + Holo + Prismatic
+                        </div>
+                        <div class="text-center text-yellow-400 font-bold">
+                            Up to 10x+ Multiplier!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Element Types -->
+                <div class="feature-card glass-panel p-6 rounded-2xl scroll-reveal">
+                    <div class="text-3xl mb-4">🔥</div>
+                    <h3 class="text-xl font-bold mb-3">7 Element Types</h3>
+                    <p class="text-gray-300 mb-4">Collect cards from different elemental types, each with unique themes!</p>
+                    <div class="grid grid-cols-2 gap-2 text-sm">
+                        <div class="flex items-center gap-2">
+                            <span>🔥</span><span>Fire</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>💧</span><span>Water</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>⚡</span><span>Electric</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>🍃</span><span>Grass</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>🔮</span><span>Psychic</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>⚙️</span><span>Neutral</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>🌟</span><span>Wild</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gear System -->
+                <div class="feature-card glass-panel p-6 rounded-2xl scroll-reveal">
+                    <div class="text-3xl mb-4">⚙️</div>
+                    <h3 class="text-xl font-bold mb-3">Gear & Equipment</h3>
+                    <p class="text-gray-300 mb-4">Buy gear to enhance your runs with powerful effects and visual themes!</p>
+                    <div class="space-y-2 text-sm">
+                        <div><span class="text-blue-400">Playmats:</span> Bias card types</div>
+                        <div><span class="text-green-400">Sleeves:</span> Improve condition & luck</div>
+                        <div><span class="text-yellow-400">Deckboxes:</span> Increase deck size</div>
+                        <div><span class="text-purple-400">Binders:</span> Boost sell values</div>
+                        <div><span class="text-red-400">Tools:</span> Special abilities</div>
+                        <div><span class="text-pink-400">Charms:</span> Unique effects</div>
+                    </div>
+                </div>
+
+                <!-- Collection Tracking -->
+                <div class="feature-card glass-panel p-6 rounded-2xl scroll-reveal">
+                    <div class="text-3xl mb-4">📚</div>
+                    <h3 class="text-xl font-bold mb-3">Advanced Collection</h3>
+                    <p class="text-gray-300 mb-4">Two collection systems track your progress in different ways!</p>
+                    <div class="space-y-3">
+                        <div class="bg-blue-500 bg-opacity-20 p-3 rounded">
+                            <div class="font-bold text-blue-400">Collection Book</div>
+                            <div class="text-xs text-gray-300">Best version of each card</div>
+                        </div>
+                        <div class="bg-purple-500 bg-opacity-20 p-3 rounded">
+                            <div class="font-bold text-purple-400">The Big Book</div>
+                            <div class="text-xs text-gray-300">Every finish combination</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Features Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 game-title scroll-reveal">
+                🚀 Advanced Features
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Unlock Codes -->
+                <div class="feature-card glass-panel p-8 rounded-2xl scroll-reveal">
+                    <div class="text-4xl mb-4">🔓</div>
+                    <h3 class="text-2xl font-bold mb-4">Secret Unlock Codes</h3>
+                    <p class="text-gray-300 mb-6">Discover hidden codes that unlock powerful game modifiers!</p>
+                    <div class="space-y-3">
+                        <div class="bg-green-500 bg-opacity-20 p-3 rounded">
+                            <div class="font-bold text-green-400">binderbuster</div>
+                            <div class="text-sm text-gray-300">Adds all cards to collection</div>
+                        </div>
+                        <div class="bg-blue-500 bg-opacity-20 p-3 rounded">
+                            <div class="font-bold text-blue-400">bigdeckenergy</div>
+                            <div class="text-sm text-gray-300">Double deck size & buffs</div>
+                        </div>
+                        <div class="bg-yellow-500 bg-opacity-20 p-3 rounded">
+                            <div class="font-bold text-yellow-400">momoneymoshrooms</div>
+                            <div class="text-sm text-gray-300">Double money & +100% sell value</div>
+                        </div>
+                        <div class="bg-red-500 bg-opacity-20 p-3 rounded">
+                            <div class="font-bold text-red-400">malicioushroom</div>
+                            <div class="text-sm text-gray-300">Hard mode challenge</div>
+                        </div>
+                        <div class="bg-purple-500 bg-opacity-20 p-3 rounded">
+                            <div class="font-bold text-purple-400">premiumprinters</div>
+                            <div class="text-sm text-gray-300">All cards Gem Mint condition</div>
+                        </div>
+                        <div class="bg-pink-500 bg-opacity-20 p-3 rounded">
+                            <div class="font-bold text-pink-400">supershinysparkly</div>
+                            <div class="text-sm text-gray-300">100x more special finishes</div>
+                        </div>
+                        <div class="bg-indigo-500 bg-opacity-20 p-3 rounded">
+                            <div class="font-bold text-indigo-400">agent00shroom</div>
+                            <div class="text-sm text-gray-300">Unlocks autoplay button</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Themes -->
+                <div class="feature-card glass-panel p-8 rounded-2xl scroll-reveal">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="text-2xl font-bold mb-4">Dynamic Visual Themes</h3>
+                    <p class="text-gray-300 mb-6">Your gear changes the appearance of different game areas!</p>
+                    <div class="space-y-4">
+                        <div class="bg-gradient-to-r from-yellow-600 to-yellow-400 p-3 rounded">
+                            <div class="font-bold text-yellow-900">Deckbox Themes</div>
+                            <div class="text-sm text-yellow-800">Current deck background changes</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-pink-600 to-purple-400 p-3 rounded">
+                            <div class="font-bold text-white">Sleeves Themes</div>
+                            <div class="text-sm text-pink-100">Pack opening area background</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-purple-600 to-blue-400 p-3 rounded">
+                            <div class="font-bold text-white">Binder Themes</div>
+                            <div class="text-sm text-purple-100">Sidebar background changes</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-600 to-blue-400 p-3 rounded">
+                            <div class="font-bold text-white">Playmat Themes</div>
+                            <div class="text-sm text-green-100">Full background themes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Generation System -->
+    <section class="py-20 px-4 bg-black bg-opacity-20">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 game-title scroll-reveal">
+                🌟 Generation System
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="feature-card glass-panel p-8 rounded-2xl scroll-reveal">
+                    <div class="text-4xl mb-4">1️⃣</div>
+                    <h3 class="text-2xl font-bold mb-4">Generation 1</h3>
+                    <p class="text-gray-300 mb-4">Start your journey with the classic Generation 1 cards!</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span>Cards Available:</span>
+                            <span class="text-blue-400">60 unique cards</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Unlock Cost:</span>
+                            <span class="text-green-400">Free (default)</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Pack Types:</span>
+                            <span class="text-yellow-400">3 varieties</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card glass-panel p-8 rounded-2xl scroll-reveal">
+                    <div class="text-4xl mb-4">2️⃣</div>
+                    <h3 class="text-2xl font-bold mb-4">Generation 2</h3>
+                    <p class="text-gray-300 mb-4">Unlock Generation 2 by reaching $2,500 collection value!</p>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span>Cards Available:</span>
+                            <span class="text-blue-400">60 unique cards</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Unlock Cost:</span>
+                            <span class="text-green-400">$2,500 collection</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Pack Types:</span>
+                            <span class="text-yellow-400">3 varieties</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unique Features Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 game-title scroll-reveal">
+                💎 What Makes It Special
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="feature-card glass-panel p-6 rounded-2xl text-center scroll-reveal">
+                    <div class="text-4xl mb-4">⚠️</div>
+                    <h3 class="text-xl font-bold mb-3">Misprint System</h3>
+                    <p class="text-gray-300">Ultra-rare misprints with visual errors, typos, and distortions. Only 0.1% chance!</p>
+                </div>
+
+                <div class="feature-card glass-panel p-6 rounded-2xl text-center scroll-reveal">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold mb-3">Smart Highlighting</h3>
+                    <p class="text-gray-300">Click element types to highlight matching cards across your deck and opened packs!</p>
+                </div>
+
+                <div class="feature-card glass-panel p-6 rounded-2xl text-center scroll-reveal">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold mb-3">Pull Rate Simulation</h3>
+                    <p class="text-gray-300">See exact pull rates for every card calculated from 20,000+ pack simulations!</p>
+                </div>
+
+                <div class="feature-card glass-panel p-6 rounded-2xl text-center scroll-reveal">
+                    <div class="text-4xl mb-4">🔄</div>
+                    <h3 class="text-xl font-bold mb-3">Persistent Progress</h3>
+                    <p class="text-gray-300">Your collection, unlocks, and achievements save automatically between sessions!</p>
+                </div>
+
+                <div class="feature-card glass-panel p-6 rounded-2xl text-center scroll-reveal">
+                    <div class="text-4xl mb-4">🎮</div>
+                    <h3 class="text-xl font-bold mb-3">Responsive Design</h3>
+                    <p class="text-gray-300">Optimized for desktop, tablet, and mobile. Play anywhere, anytime!</p>
+                </div>
+
+                <div class="feature-card glass-panel p-6 rounded-2xl text-center scroll-reveal">
+                    <div class="text-4xl mb-4">🆓</div>
+                    <h3 class="text-xl font-bold mb-3">Completely Free</h3>
+                    <p class="text-gray-300">No ads, no microtransactions, no accounts required. Just pure card opening fun!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 px-4 bg-black bg-opacity-20">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 game-title scroll-reveal">
+                📈 By the Numbers
+            </h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="scroll-reveal">
+                    <div class="text-4xl font-bold text-blue-400 mb-2">120+</div>
+                    <div class="text-gray-300">Unique Cards</div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="text-4xl font-bold text-green-400 mb-2">1000+</div>
+                    <div class="text-gray-300">Possible Combinations</div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="text-4xl font-bold text-yellow-400 mb-2">50+</div>
+                    <div class="text-gray-300">Gear Items</div>
+                </div>
+                <div class="scroll-reveal">
+                    <div class="text-4xl font-bold text-purple-400 mb-2">∞</div>
+                    <div class="text-gray-300">Replayability</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8 game-title scroll-reveal">
+                Ready to Start Collecting?
+            </h2>
+            <p class="text-xl text-gray-300 mb-12 scroll-reveal">
+                Join thousands of players discovering rare cards, building valuable collections,
+                and experiencing the thrill of the perfect pack opening!
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center scroll-reveal">
+                <a href="index.html" class="btn-primary text-white font-bold py-4 px-8 rounded-xl text-lg transition-all">
+                    🚀 Start Playing Now
+                </a>
+                <button onclick="scrollToSection('how-to-play')" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-xl text-lg transition-all">
+                    📖 Review How to Play
+                </button>
+            </div>
+
+            <div class="mt-12 text-gray-400 scroll-reveal">
+                <p>No download required • Plays in your browser • Free forever</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-black bg-opacity-40">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="text-3xl font-bold game-title mb-4">🍄 Elemental Shrooms</div>
+            <p class="text-gray-400 mb-6">The ultimate card pack opening experience</p>
+
+            <div class="flex justify-center gap-8 text-sm text-gray-500">
+                <span>Made with ❤️ for card game enthusiasts</span>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    function scrollToSection(sectionId) {
+        document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Scroll reveal animation
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+        observer.observe(el);
+    });
+</script>
+</body>
+</html>
