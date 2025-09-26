@@ -483,6 +483,96 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        .leaderboard-tab {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .leaderboard-tab.active {
+            border-bottom-color: #3b82f6;
+            color: #60a5fa;
+        }
+
+        .leaderboard-entry {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .leaderboard-entry:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .leaderboard-rank {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            font-weight: bold;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .leaderboard-rank.rank-1 {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+
+        .leaderboard-rank.rank-2 {
+            background: linear-gradient(135deg, #9ca3af, #6b7280);
+        }
+
+        .leaderboard-rank.rank-3 {
+            background: linear-gradient(135deg, #cd7c0f, #92400e);
+        }
+
+        .leaderboard-card-preview {
+            width: 60px;
+            height: 84px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .leaderboard-card-preview:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+
+        .leaderboard-card-preview .card {
+            width: 100%;
+            height: 100%;
+            font-size: 0.6rem;
+        }
+
+        .leaderboard-card-preview .card-name {
+            font-size: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .leaderboard-card-preview .card-rarity-info {
+            font-size: 0.4rem;
+            height: 0.5rem;
+        }
+
+        .leaderboard-card-preview .card-value-display {
+            font-size: 0.5rem;
+        }
+
+        .leaderboard-card-preview .card-condition {
+            font-size: 0.4rem;
+        }
+
+        .leaderboard-card-preview .card-indicator {
+            width: 0.8rem;
+            height: 0.8rem;
+            font-size: 0.4rem;
+        }
         .card-indicator {
             position: absolute;
             top: 0.25rem;
@@ -554,63 +644,62 @@
         }
 
         /* Deckbox Background Themes */
+        .deckbox-background {
+            background-repeat: repeat !important;
+            background-size: 200px 200px !important;
+        }
+
         .deckbox-cardboard {
-            background: linear-gradient(135deg, #d2b48c, #daa520) !important;
             border: 2px solid #8b7355 !important;
         }
 
         .deckbox-plastic {
-            background: linear-gradient(135deg, #4a5568, #2d3748) !important;
             border: 2px solid #718096 !important;
         }
 
         .deckbox-reinforced {
-            background: linear-gradient(135deg, #c0c0c0, #a8a8a8) !important;
             border: 2px solid #696969 !important;
         }
 
         .deckbox-vault {
-            background: linear-gradient(135deg, #ffd700, #ffb347) !important;
             border: 2px solid #daa520 !important;
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.3) !important;
         }
 
         /* Sleeves Background Themes (Pack Opening Area) */
+        .sleeves-background {
+            background-repeat: repeat !important;
+            background-size: 150px 150px !important;
+        }
+
         .sleeves-penny {
-            background: linear-gradient(135deg, #f5f5dc, #e6e6fa) !important;
             border: 2px solid #d3d3d3 !important;
         }
 
         .sleeves-protective {
-            background: linear-gradient(135deg, #87ceeb, #b0e0e6) !important;
             border: 2px solid #4682b4 !important;
         }
 
         .sleeves-lucky {
-            background: linear-gradient(135deg, #98fb98, #90ee90) !important;
             border: 2px solid #32cd32 !important;
         }
 
         .sleeves-holo {
-            background: linear-gradient(135deg, #ff69b4, #ffc0cb, #da70d6) !important;
             border: 2px solid #ff1493 !important;
             box-shadow: 0 0 15px rgba(255, 105, 180, 0.3) !important;
         }
 
         .sleeves-gilded {
-            background: linear-gradient(135deg, #ffd700, #ffef94) !important;
             border: 2px solid #b8860b !important;
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.2) !important;
         }
 
         .sleeves-dragon {
-            background: linear-gradient(135deg, #8b0000, #dc143c) !important;
             border: 2px solid #800000 !important;
             box-shadow: 0 0 20px rgba(220, 20, 60, 0.4) !important;
         }
 
         .sleeves-starlight {
-            background: linear-gradient(135deg, #191970, #4169e1, #6495ed) !important;
             border: 2px solid #000080 !important;
             box-shadow: 0 0 25px rgba(65, 105, 225, 0.5) !important;
         }
@@ -1036,6 +1125,10 @@
                     <button id="view-last-run-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors">
                         View Last Run
                     </button>
+                    <button id="personal-leaderboard-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition-colors flex items-center gap-2">
+                        <span>🏆</span>
+                        Leaderboard
+                    </button>
                     <button id="clear-progress-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-colors flex items-center gap-2">
                         <span>🗑️</span>
                         Clear Progress
@@ -1098,6 +1191,46 @@
                     <button id="big-book-next-btn" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-r disabled:opacity-50 disabled:cursor-not-allowed">
                         Next &gt;
                     </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personal Leaderboard Modal -->
+    <div id="personal-leaderboard-modal" class="fixed inset-0 z-50 items-center justify-center hidden modal-backdrop">
+        <div class="glass-panel w-[95vw] h-[90vh] max-w-6xl mx-auto rounded-2xl overflow-hidden flex flex-col">
+            <!-- Header Section -->
+            <div class="flex justify-between items-center p-6 border-b-2 border-gray-600 flex-shrink-0">
+                <div class="flex items-center gap-4">
+                    <h2 class="text-3xl font-bold text-white game-title">🏆 Personal Leaderboard</h2>
+                    <p class="text-gray-300">Your top 10 runs across different categories</p>
+                </div>
+                <button id="close-leaderboard-btn" class="text-gray-400 hover:text-white text-2xl font-bold transition-colors">✕</button>
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="flex border-b border-gray-600 flex-shrink-0">
+                <button id="leaderboard-tab-deck-value" class="leaderboard-tab active px-6 py-3 text-sm font-medium border-b-2 border-blue-500 text-blue-400">
+                    💎 Deck Value
+                </button>
+                <button id="leaderboard-tab-money" class="leaderboard-tab px-6 py-3 text-sm font-medium text-gray-400 hover:text-white">
+                    💰 Final Money
+                </button>
+                <button id="leaderboard-tab-valuable-card" class="leaderboard-tab px-6 py-3 text-sm font-medium text-gray-400 hover:text-white">
+                    🌟 Most Valuable Card
+                </button>
+                <button id="leaderboard-tab-collection-growth" class="leaderboard-tab px-6 py-3 text-sm font-medium text-gray-400 hover:text-white">
+                    📈 Collection Growth
+                </button>
+                <button id="leaderboard-tab-cards-opened" class="leaderboard-tab px-6 py-3 text-sm font-medium text-gray-400 hover:text-white">
+                    📦 Cards Opened
+                </button>
+            </div>
+
+            <!-- Leaderboard Content -->
+            <div class="flex-1 overflow-y-auto p-6">
+                <div id="leaderboard-content" class="space-y-4">
+                    <!-- Leaderboard entries will be populated here -->
                 </div>
             </div>
         </div>
@@ -1342,6 +1475,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewLastRunBtn = document.getElementById('view-last-run-btn');
     const clearProgressBtn = document.getElementById('clear-progress-btn');
 
+    // Personal Leaderboard Elements
+    const personalLeaderboardBtn = document.getElementById('personal-leaderboard-btn');
+    const personalLeaderboardModal = document.getElementById('personal-leaderboard-modal');
+    const closeLeaderboardBtn = document.getElementById('close-leaderboard-btn');
+    const leaderboardTabs = document.querySelectorAll('.leaderboard-tab');
+    const leaderboardContent = document.getElementById('leaderboard-content');
+
     // Clear Progress Modal Elements
     const clearProgressModal = document.getElementById('clear-progress-modal');
     const cancelClearBtn = document.getElementById('cancel-clear-btn');
@@ -1468,6 +1608,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 showNewCardIndicator: true,
                 showUpgradeCardIndicator: true,
                 lastRunData: null, // Store last run results
+                personalLeaderboard: {
+                    deckValue: [],
+                    finalMoney: [],
+                    mostValuableCard: [],
+                    collectionGrowth: [],
+                    cardsOpened: []
+                }
             };
         }
 
@@ -1499,6 +1646,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (metaState.bigBook === undefined) {
             metaState.bigBook = [];
+        }
+        if (metaState.personalLeaderboard === undefined) {
+            metaState.personalLeaderboard = {
+                deckValue: [],
+                finalMoney: [],
+                mostValuableCard: [],
+                collectionGrowth: [],
+                cardsOpened: []
+            };
         }
 
         metaState.collectionBookView = {
@@ -2178,9 +2334,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 gearContainer.appendChild(tooltipEl);
                 equippedGearList.appendChild(gearContainer);
 
-                if (item.theme) {
+                // Apply playmat background if this is a playmat
+                if (item.type === 'Playmat' && item.img) {
                     bodyBackground.classList.remove('bg-gray-900');
-                    bodyBackground.classList.add(item.theme);
+                    // Remove any existing playmat classes
+                    bodyBackground.classList.remove('playmat-fire', 'playmat-water', 'playmat-electric', 'playmat-grass', 'playmat-psychic', 'playmat-neutral', 'playmat-wild');
+
+                    // Determine the playmat class from the image path
+                    const imgPath = item.img.toLowerCase();
+                    if (imgPath.includes('fire')) {
+                        bodyBackground.classList.add('playmat-fire');
+                    } else if (imgPath.includes('water')) {
+                        bodyBackground.classList.add('playmat-water');
+                    } else if (imgPath.includes('electric')) {
+                        bodyBackground.classList.add('playmat-electric');
+                    } else if (imgPath.includes('grass')) {
+                        bodyBackground.classList.add('playmat-grass');
+                    } else if (imgPath.includes('psychic')) {
+                        bodyBackground.classList.add('playmat-psychic');
+                    } else if (imgPath.includes('metal')) {
+                        bodyBackground.classList.add('playmat-neutral');
+                    } else if (imgPath.includes('wild')) {
+                        bodyBackground.classList.add('playmat-wild');
+                    }
                 }
                 switch (item.effect.type) {
                     case 'MAX_COLLECTION_INCREASE':
@@ -2614,23 +2790,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const deckSection = document.getElementById('deck-section');
         const equippedDeckbox = state.equippedMerchandise['Deck Box'];
 
-        // Remove all deckbox theme classes
-        deckSection.classList.remove('deckbox-cardboard', 'deckbox-plastic', 'deckbox-reinforced', 'deckbox-vault');
+        // Remove all deckbox theme classes and background
+        deckSection.classList.remove('deckbox-background', 'deckbox-cardboard', 'deckbox-plastic', 'deckbox-reinforced', 'deckbox-vault');
+        deckSection.style.backgroundImage = '';
 
-        if (equippedDeckbox) {
-            // Map deckbox IDs to CSS classes
-            const deckboxThemes = {
-                'db_c_cardboard': 'deckbox-cardboard',
-                'db_u_plastic': 'deckbox-plastic',
-                'db_r_reinforced': 'deckbox-reinforced',
-                'db_ur_vault': 'deckbox-vault'
-            };
+        if (equippedDeckbox && equippedDeckbox.img) {
+            // Apply background image with dark overlay from img property
+            deckSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${equippedDeckbox.img}')`;
+            deckSection.classList.add('deckbox-background');
 
-            const themeClass = deckboxThemes[equippedDeckbox.id];
-            if (themeClass) {
-                deckSection.classList.add(themeClass);
-                console.log(`Applied deckbox theme: ${themeClass} for ${equippedDeckbox.name}`);
+            // Determine the specific theme class from the image path
+            const imgPath = equippedDeckbox.img.toLowerCase();
+            if (imgPath.includes('cardboard')) {
+                deckSection.classList.add('deckbox-cardboard');
+            } else if (imgPath.includes('plastic')) {
+                deckSection.classList.add('deckbox-plastic');
+            } else if (imgPath.includes('reinforced')) {
+                deckSection.classList.add('deckbox-reinforced');
+            } else if (imgPath.includes('vault')) {
+                deckSection.classList.add('deckbox-vault');
             }
+
+            console.log(`Applied deckbox background: ${equippedDeckbox.img} for ${equippedDeckbox.name}`);
         }
     }
 
@@ -2638,26 +2819,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const packOpeningSection = document.getElementById('pack-opening-section');
         const equippedSleeves = state.equippedMerchandise['Sleeves'];
 
-        // Remove all sleeves theme classes
-        packOpeningSection.classList.remove('sleeves-penny', 'sleeves-protective', 'sleeves-lucky', 'sleeves-holo', 'sleeves-gilded', 'sleeves-dragon', 'sleeves-starlight');
+        // Remove all sleeves theme classes and background
+        packOpeningSection.classList.remove('sleeves-background', 'sleeves-penny', 'sleeves-protective', 'sleeves-lucky', 'sleeves-holo', 'sleeves-gilded', 'sleeves-dragon', 'sleeves-starlight');
+        packOpeningSection.style.backgroundImage = '';
 
-        if (equippedSleeves) {
-            // Map sleeves IDs to CSS classes
-            const sleevesThemes = {
-                'sl_c_penny': 'sleeves-penny',
-                'sl_u_protective': 'sleeves-protective',
-                'sl_u_lucky': 'sleeves-lucky',
-                'sl_r_holo': 'sleeves-holo',
-                'sl_r_gilded': 'sleeves-gilded',
-                'sl_ur_dragon': 'sleeves-dragon',
-                'sl_sr_starlight': 'sleeves-starlight'
-            };
+        if (equippedSleeves && equippedSleeves.img) {
+            // Apply background image with dark overlay from img property
+            packOpeningSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${equippedSleeves.img}')`;
+            packOpeningSection.classList.add('sleeves-background');
 
-            const themeClass = sleevesThemes[equippedSleeves.id];
-            if (themeClass) {
-                packOpeningSection.classList.add(themeClass);
-                console.log(`Applied sleeves theme: ${themeClass} for ${equippedSleeves.name}`);
+            // Determine the specific theme class from the image path
+            const imgPath = equippedSleeves.img.toLowerCase();
+            if (imgPath.includes('penny')) {
+                packOpeningSection.classList.add('sleeves-penny');
+            } else if (imgPath.includes('protective')) {
+                packOpeningSection.classList.add('sleeves-protective');
+            } else if (imgPath.includes('lucky')) {
+                packOpeningSection.classList.add('sleeves-lucky');
+            } else if (imgPath.includes('holo')) {
+                packOpeningSection.classList.add('sleeves-holo');
+            } else if (imgPath.includes('gilded')) {
+                packOpeningSection.classList.add('sleeves-gilded');
+            } else if (imgPath.includes('dragon')) {
+                packOpeningSection.classList.add('sleeves-dragon');
+            } else if (imgPath.includes('starlight')) {
+                packOpeningSection.classList.add('sleeves-starlight');
             }
+
+            console.log(`Applied sleeves background: ${equippedSleeves.img} for ${equippedSleeves.name}`);
         }
     }
 
@@ -3694,6 +3883,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const newlyUnlocked = checkForNewUnlocks();
         const newUnlockText = newlyUnlocked.length > 0 ? `You've unlocked ${newlyUnlocked.join(', ').toUpperCase()} packs!` : "";
 
+        // Calculate cards opened this run
+        const cardsOpenedThisRun = Object.values(state.packsPurchased).reduce((total, count) => {
+            return total + (count * 5); // Assuming 5 cards per pack base
+        }, 0);
+
         // Store last run data for "View Last Run" functionality
         metaState.lastRunData = {
             reason: reason,
@@ -3704,8 +3898,23 @@ document.addEventListener('DOMContentLoaded', () => {
             mostValuableCard: state.deck.length > 0 ? state.deck.reduce((best, current) => {
                 return getCardValue(current) > getCardValue(best) ? current : best;
             }) : null,
-            timestamp: new Date().toISOString()
+            timestamp: new Date().toISOString(),
+            finalMoney: state.money,
+            cardsOpened: cardsOpenedThisRun
         };
+
+        // Update personal leaderboard
+        updatePersonalLeaderboard({
+            deckValue: state.deckValue,
+            finalMoney: state.money,
+            mostValuableCard: state.deck.length > 0 ? state.deck.reduce((best, current) => {
+                return getCardValue(current) > getCardValue(best) ? current : best;
+            }) : null,
+            collectionGrowth: newCardsValue,
+            cardsOpened: cardsOpenedThisRun,
+            timestamp: new Date().toISOString(),
+            reason: reason
+        });
 
         saveMetaState();
 
@@ -3987,6 +4196,177 @@ document.addEventListener('DOMContentLoaded', () => {
         clearProgressModal.classList.remove('flex');
     }
 
+    // --- PERSONAL LEADERBOARD LOGIC ---
+    function updatePersonalLeaderboard(runData) {
+        const leaderboard = metaState.personalLeaderboard;
+
+        // Add to deck value leaderboard
+        leaderboard.deckValue.push({
+            value: runData.deckValue,
+            timestamp: runData.timestamp,
+            reason: runData.reason
+        });
+        leaderboard.deckValue.sort((a, b) => b.value - a.value);
+        leaderboard.deckValue = leaderboard.deckValue.slice(0, 10);
+
+        // Add to final money leaderboard
+        leaderboard.finalMoney.push({
+            value: runData.finalMoney,
+            timestamp: runData.timestamp,
+            reason: runData.reason
+        });
+        leaderboard.finalMoney.sort((a, b) => b.value - a.value);
+        leaderboard.finalMoney = leaderboard.finalMoney.slice(0, 10);
+
+        // Add to most valuable card leaderboard
+        if (runData.mostValuableCard) {
+            leaderboard.mostValuableCard.push({
+                card: runData.mostValuableCard,
+                value: getCardValue(runData.mostValuableCard),
+                timestamp: runData.timestamp,
+                reason: runData.reason
+            });
+            leaderboard.mostValuableCard.sort((a, b) => b.value - a.value);
+            leaderboard.mostValuableCard = leaderboard.mostValuableCard.slice(0, 10);
+        }
+
+        // Add to collection growth leaderboard
+        leaderboard.collectionGrowth.push({
+            value: runData.collectionGrowth,
+            timestamp: runData.timestamp,
+            reason: runData.reason
+        });
+        leaderboard.collectionGrowth.sort((a, b) => b.value - a.value);
+        leaderboard.collectionGrowth = leaderboard.collectionGrowth.slice(0, 10);
+
+        // Add to cards opened leaderboard
+        leaderboard.cardsOpened.push({
+            value: runData.cardsOpened,
+            timestamp: runData.timestamp,
+            reason: runData.reason
+        });
+        leaderboard.cardsOpened.sort((a, b) => b.value - a.value);
+        leaderboard.cardsOpened = leaderboard.cardsOpened.slice(0, 10);
+    }
+
+    function showPersonalLeaderboard() {
+        personalLeaderboardModal.classList.remove('hidden');
+        personalLeaderboardModal.classList.add('flex');
+        renderLeaderboard('deck-value');
+    }
+
+    function closePersonalLeaderboard() {
+        personalLeaderboardModal.classList.add('hidden');
+        personalLeaderboardModal.classList.remove('flex');
+    }
+
+    function renderLeaderboard(category) {
+        const leaderboard = metaState.personalLeaderboard;
+        let data = [];
+        let title = '';
+        let valueFormatter = (value) => value;
+
+        switch(category) {
+            case 'deck-value':
+                data = leaderboard.deckValue;
+                title = '💎 Top 10 Deck Values';
+                valueFormatter = formatMoney;
+                break;
+            case 'money':
+                data = leaderboard.finalMoney;
+                title = '💰 Top 10 Final Money';
+                valueFormatter = formatMoney;
+                break;
+            case 'valuable-card':
+                data = leaderboard.mostValuableCard;
+                title = '🌟 Top 10 Most Valuable Cards';
+                valueFormatter = formatMoney;
+                break;
+            case 'collection-growth':
+                data = leaderboard.collectionGrowth;
+                title = '📈 Top 10 Collection Growth';
+                valueFormatter = (value) => formatMoney(value, true);
+                break;
+            case 'cards-opened':
+                data = leaderboard.cardsOpened;
+                title = '📦 Top 10 Cards Opened';
+                valueFormatter = (value) => `${value} cards`;
+                break;
+        }
+
+        leaderboardContent.innerHTML = `
+            <h3 class="text-2xl font-bold mb-6 text-center">${title}</h3>
+            ${data.length === 0 ?
+                '<p class="text-gray-400 text-center">No runs recorded yet. Complete some runs to see your leaderboard!</p>' :
+                data.map((entry, index) => {
+                    const rank = index + 1;
+                    const rankClass = rank <= 3 ? `rank-${rank}` : '';
+                    const date = new Date(entry.timestamp).toLocaleDateString();
+
+                    if (category === 'valuable-card' && entry.card) {
+                        const cardPreview = createLeaderboardCardPreview(entry.card);
+                        return `
+                            <div class="leaderboard-entry rounded-lg p-4 flex items-center gap-4">
+                                <div class="leaderboard-rank ${rankClass}">${rank}</div>
+                                <div class="flex-1">
+                                    <div class="flex items-center gap-4">
+                                        <div class="leaderboard-card-preview flex-shrink-0" data-card='${JSON.stringify(entry.card)}'>
+                                            ${cardPreview.outerHTML}
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-lg">${entry.card.name}</p>
+                                            <p class="text-green-400 font-bold">${valueFormatter(entry.value)}</p>
+                                            <p class="text-gray-400 text-sm">${date}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        return `
+                            <div class="leaderboard-entry rounded-lg p-4 flex items-center gap-4">
+                                <div class="leaderboard-rank ${rankClass}">${rank}</div>
+                                <div class="flex-1">
+                                    <p class="font-semibold text-lg">${valueFormatter(entry.value)}</p>
+                                    <p class="text-gray-400 text-sm">${date}</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }).join('')
+            }
+        `;
+
+        // Add event listeners for card previews
+        setTimeout(() => {
+            const cardPreviews = leaderboardContent.querySelectorAll('.leaderboard-card-preview');
+            cardPreviews.forEach(preview => {
+                const cardData = JSON.parse(preview.dataset.card);
+
+                // Click to show full card modal
+                preview.addEventListener('click', () => {
+                    showCardDetailModal(cardData);
+                });
+
+                // Add hover tooltip (optional - could show larger preview)
+                preview.title = `${cardData.name} - Click to view full card`;
+            });
+        }, 100);
+    }
+
+    function createLeaderboardCardPreview(card) {
+        const cardEl = createCardElement(card, 'leaderboard');
+
+        // Remove any existing indicators and buttons for clean preview
+        const indicators = cardEl.querySelectorAll('.card-indicator');
+        indicators.forEach(indicator => indicator.remove());
+
+        const buttons = cardEl.querySelectorAll('button');
+        buttons.forEach(button => button.remove());
+
+        return cardEl;
+    }
+
     function clearAllProgress() {
         // Reset metaState to default
         metaState = {
@@ -3998,6 +4378,13 @@ document.addEventListener('DOMContentLoaded', () => {
             showNewCardIndicator: true,
             showUpgradeCardIndicator: true,
             lastRunData: null,
+            personalLeaderboard: {
+                deckValue: [],
+                finalMoney: [],
+                mostValuableCard: [],
+                collectionGrowth: [],
+                cardsOpened: []
+            }
         };
 
         // Save the reset state
@@ -4902,6 +5289,29 @@ document.addEventListener('DOMContentLoaded', () => {
         metaState.showUpgradeCardIndicator = toggleUpgradeIndicator.checked;
         saveMetaState();
         updateOpenCardIndicators();
+    });
+
+    // Personal Leaderboard Event Listeners
+    personalLeaderboardBtn.addEventListener('click', showPersonalLeaderboard);
+    closeLeaderboardBtn.addEventListener('click', closePersonalLeaderboard);
+
+    // Leaderboard tab switching
+    leaderboardTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            leaderboardTabs.forEach(t => {
+                t.classList.remove('active', 'border-blue-500', 'text-blue-400');
+                t.classList.add('text-gray-400');
+            });
+
+            // Add active class to clicked tab
+            tab.classList.add('active', 'border-blue-500', 'text-blue-400');
+            tab.classList.remove('text-gray-400');
+
+            // Get category from tab ID
+            const category = tab.id.replace('leaderboard-tab-', '');
+            renderLeaderboard(category);
+        });
     });
 });
 </script>
